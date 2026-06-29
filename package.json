@@ -9,13 +9,14 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@tsparticles/engine": "^3.8.1",
-    "@tsparticles/slim": "^3.8.1",
-    "astro": "^4.16.18",
+    "astro": "^6.4.8",
     "balloons-js": "^0.0.3"
   },
   "devDependencies": {
     "fontkit": "^2.0.4",
     "opentype.js": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=22.12.0"
   }
 }
