@@ -1,35 +1,26 @@
 # WhatsApp Jobs
 
-> WhatsApp Jobs is an Australia-wide service for finding construction, labour hire, tradie, hospitality, warehouse, and farm work through WhatsApp job groups — no extra app. Powered by Yakka.
+> WhatsApp Jobs is an Australia-wide service for finding construction, labour hire, tradie, hospitality, warehouse, and farm work through WhatsApp job groups. No extra app. Powered by Yakka.
 
-## What is WhatsApp Jobs?
+WhatsApp Jobs helps workers in Australia find real shifts posted in WhatsApp groups they already use. Hirers with labour WhatsApp groups can use the service to reach workers when they are short-handed.
 
-WhatsApp Jobs helps workers in Australia find real shifts posted in WhatsApp groups they already use. Message +61 416 184 624 or visit https://whatsappjobs.com.au with your trade and location; the team connects you to active WhatsApp job groups near you. Hirers with labour WhatsApp groups can also use the service to reach workers when they are short-handed.
+## Pages
 
-## Who it is for
+- [Home](https://whatsappjobs.com.au/): Main landing page with how it works, FAQ, and WhatsApp contact
+- [Sitemap](https://whatsappjobs.com.au/sitemap.xml): Index of public URLs on this site
 
-- Workers looking for construction, labouring, tradie, hospitality, warehouse, or farm jobs in Australia
-- Builders and site managers who hire through WhatsApp labour groups
-- Anyone searching for "WhatsApp jobs", "WhatsApp jobs Australia", or "WhatsApp group for work"
+## Get started
 
-## How to start
-
-1. Open https://whatsappjobs.com.au/
-2. Tap "Find work on WhatsApp"
-3. Send your trade, suburb or city, and availability
-
-## FAQ highlights
-
-- Free for workers — uses the WhatsApp app you already have
-- Jobs are posted when hirers need someone, often at short notice
-- After a shift, many workers use Yakka (https://yakkalabour.com.au/) for timesheets and invoicing
+- [Find work on WhatsApp](https://wa.me/61416184624?text=Hi%2C%20I%27m%20looking%20for%20work.%20My%20trade%20is%20__%20and%20I%27m%20based%20in%20__): Message WhatsApp Jobs with your trade and location to join job groups near you
+- [Hire through WhatsApp](https://wa.me/61416184624?text=Hi%2C%20I%20need%20to%20hire%20workers%20for%20my%20site): For builders and site managers with labour WhatsApp groups
 
 ## Contact
 
-- Site: https://whatsappjobs.com.au
-- Email: hello@whatsappjobs.com.au
-- WhatsApp: +61 416 184 624
+- [Website](https://whatsappjobs.com.au): whatsappjobs.com.au
+- [Email](mailto:hello@whatsappjobs.com.au): hello@whatsappjobs.com.au
+- [WhatsApp](https://wa.me/61416184624): +61 416 184 624
 
-## Powered by Yakka
+## Optional
 
-- Labour hire platform: https://yakkalabour.com.au/
+- [Yakka labour hire app](https://yakkalabour.com.au/): Track hours on site and send invoices after a shift
+- [LLM site summary](https://whatsappjobs.com.au/llms.txt): This file
