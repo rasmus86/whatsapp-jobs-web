@@ -1,0 +1,152 @@
+---
+import { PRIMARY_GEO } from '../seo/home';
+import { SITE, YAKKA, WHATSAPP, PUBLISHER, SEO_KEYWORDS } from '../site';
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  description: string;
+  /** Full document title for WebPage schema. */
+  documentTitle?: string;
+  pageTitle?: string;
+  faq?: readonly FaqItem[];
+}
+
+const {
+  description,
+  documentTitle,
+  pageTitle = 'Find work in your WhatsApp group',
+  faq = [],
+} = Astro.props;
+const pageUrl = SITE.url;
+const pageName = documentTitle ?? `${SITE.name} | ${pageTitle}`;
+
+const graphNodes: Record<string, unknown>[] = [
+  {
+    '@type': 'Organization',
+    '@id': `${pageUrl}/#organization`,
+    name: SITE.name,
+    alternateName: ['WhatsApp Jobs Australia', 'WhatsApp job groups'],
+    url: pageUrl,
+    email: SITE.email,
+    description: SITE.tagline,
+    knowsAbout: [...SEO_KEYWORDS],
+    areaServed: {
+      '@type': 'Country',
+      name: PRIMARY_GEO.placename,
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      telephone: WHATSAPP.e164,
+      email: SITE.email,
+      areaServed: PRIMARY_GEO.regionIso,
+      availableLanguage: PRIMARY_GEO.locale,
+      url: `https://wa.me/${WHATSAPP.waMe}`,
+    },
+    parentOrganization: {
+      '@type': 'Organization',
+      name: YAKKA.name,
+      url: YAKKA.url,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: PUBLISHER.name,
+    },
+    sameAs: [YAKKA.url],
+  },
+  {
+    '@type': 'WebSite',
+    '@id': `${pageUrl}/#website`,
+    url: pageUrl,
+    name: SITE.name,
+    alternateName: 'WhatsApp Jobs Australia',
+    description: SITE.tagline,
+    inLanguage: PRIMARY_GEO.locale,
+    publisher: { '@id': `${pageUrl}/#organization` },
+    potentialAction: {
+      '@type': 'CommunicateAction',
+      name: 'Find work on WhatsApp',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `https://wa.me/${WHATSAPP.waMe}`,
+        actionPlatform: [
+          'http://schema.org/MobileWebPlatform',
+          'http://schema.org/DesktopWebPlatform',
+        ],
+      },
+    },
+  },
+  {
+    '@type': 'WebPage',
+    '@id': `${pageUrl}/#webpage`,
+    url: pageUrl,
+    name: pageName,
+    description,
+    isPartOf: { '@id': `${pageUrl}/#website` },
+    about: { '@id': `${pageUrl}/#service` },
+    inLanguage: PRIMARY_GEO.locale,
+    spatialCoverage: {
+      '@type': 'Place',
+      name: PRIMARY_GEO.placename,
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: PRIMARY_GEO.latitude,
+        longitude: PRIMARY_GEO.longitude,
+      },
+    },
+  },
+  {
+    '@type': 'Service',
+    '@id': `${pageUrl}/#service`,
+    name: SITE.name,
+    alternateName: 'WhatsApp Jobs Australia',
+    serviceType: 'Labour hire job matching via WhatsApp',
+    description,
+    provider: { '@id': `${pageUrl}/#organization` },
+    areaServed: {
+      '@type': 'Country',
+      name: PRIMARY_GEO.placename,
+    },
+    audience: {
+      '@type': 'Audience',
+      audienceType: 'Workers and hirers in construction, trades, hospitality, and farm labour in Australia',
+      geographicArea: {
+        '@type': 'Country',
+        name: PRIMARY_GEO.placename,
+      },
+    },
+    availableChannel: {
+      '@type': 'ServiceChannel',
+      serviceUrl: pageUrl,
+      servicePhone: WHATSAPP.e164,
+      availableLanguage: PRIMARY_GEO.locale,
+    },
+  },
+];
+
+if (faq.length > 0) {
+  graphNodes.push({
+    '@type': 'FAQPage',
+    '@id': `${pageUrl}/#faq`,
+    mainEntity: faq.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  });
+}
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': graphNodes,
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(graph)} />

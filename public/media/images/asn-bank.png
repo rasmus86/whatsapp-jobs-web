@@ -1,0 +1,10 @@
+{
+  "error": true,
+  "url": "https://sowieso.wero-wallet.eu/media/images/asn-bank.png",
+  "statusCode": 404,
+  "statusMessage": "Page not found: /media/images/asn-bank.png",
+  "message": "Page not found: /media/images/asn-bank.png",
+  "data": {
+    "path": "/media/images/asn-bank.png"
+  }
+}

@@ -1,0 +1,35 @@
+---
+import { GEO_ABOUT } from '../data/geo-faq';
+---
+
+<section class="geo-about" id="about" aria-labelledby="geo-about-heading">
+  <div class="geo-about__shell">
+    <article class="geo-about__card">
+      <p class="geo-about__eyebrow">{GEO_ABOUT.eyebrow}</p>
+      <h2 class="geo-about__title" id="geo-about-heading">{GEO_ABOUT.heading}</h2>
+      <p class="geo-about__lead">{GEO_ABOUT.lead}</p>
+
+      <ul class="geo-about__tags" aria-label="Industries covered">
+        {GEO_ABOUT.industries.map((label) => (
+          <li><span class="geo-about__tag">{label}</span></li>
+        ))}
+      </ul>
+
+      <ul class="geo-about__perks">
+        {
+          GEO_ABOUT.perks.map((perk) => (
+            <li class="geo-about__perk">
+              <span class="geo-about__perk-icon" aria-hidden="true" />
+              <div>
+                <h3 class="geo-about__perk-title">{perk.title}</h3>
+                <p class="geo-about__perk-text">{perk.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="geo-about__footnote">{GEO_ABOUT.footnote}</p>
+    </article>
+  </div>
+</section>

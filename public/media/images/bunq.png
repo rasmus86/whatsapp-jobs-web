@@ -1,0 +1,10 @@
+{
+  "error": true,
+  "url": "https://sowieso.wero-wallet.eu/media/images/bunq.png",
+  "statusCode": 404,
+  "statusMessage": "Page not found: /media/images/bunq.png",
+  "message": "Page not found: /media/images/bunq.png",
+  "data": {
+    "path": "/media/images/bunq.png"
+  }
+}

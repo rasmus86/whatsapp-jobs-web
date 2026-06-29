@@ -1,0 +1,10 @@
+{
+  "error": true,
+  "url": "https://sowieso.wero-wallet.eu/media/images/revolut.png",
+  "statusCode": 404,
+  "statusMessage": "Page not found: /media/images/revolut.png",
+  "message": "Page not found: /media/images/revolut.png",
+  "data": {
+    "path": "/media/images/revolut.png"
+  }
+}

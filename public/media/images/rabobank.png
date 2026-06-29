@@ -1,0 +1,10 @@
+{
+  "error": true,
+  "url": "https://sowieso.wero-wallet.eu/media/images/rabobank.png",
+  "statusCode": 404,
+  "statusMessage": "Page not found: /media/images/rabobank.png",
+  "message": "Page not found: /media/images/rabobank.png",
+  "data": {
+    "path": "/media/images/rabobank.png"
+  }
+}

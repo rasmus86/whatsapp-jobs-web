@@ -1,0 +1,10 @@
+{
+  "error": true,
+  "url": "https://sowieso.wero-wallet.eu/media/images/knab.png",
+  "statusCode": 404,
+  "statusMessage": "Page not found: /media/images/knab.png",
+  "message": "Page not found: /media/images/knab.png",
+  "data": {
+    "path": "/media/images/knab.png"
+  }
+}

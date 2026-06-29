@@ -1,0 +1,54 @@
+---
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  items: readonly FaqItem[];
+  titleTexts?: readonly string[];
+}
+
+const {
+  items,
+  titleTexts = ['Questions?', 'Got doubts?', 'Need answers?', 'FAQ'],
+} = Astro.props;
+---
+
+<section class="faq" id="faq" aria-labelledby="faq-heading">
+  <h2 class="faq__title" id="faq-heading" aria-label="Questions?">
+    <span
+      class="faq__liquid-text liquid-text"
+      data-liquid-text
+      data-texts={JSON.stringify(titleTexts)}>Questions?</span>
+  </h2>
+  <div class="faq__list" data-faq-accordion>
+    {
+      items.map((item, index) => (
+        <article class:list={['faq__item', index === 0 && 'is-open']}>
+          <h3 class="faq__question-heading">
+            <button
+              type="button"
+              class="faq__question"
+              aria-expanded={index === 0 ? 'true' : 'false'}
+              aria-controls={`faq-answer-${index}`}
+              id={`faq-question-${index}`}
+            >
+              <span class="faq__question-text">{item.question}</span>
+              <span class="faq__chevron" aria-hidden="true" />
+            </button>
+          </h3>
+          <div
+            class="faq__answer"
+            id={`faq-answer-${index}`}
+            role="region"
+            aria-labelledby={`faq-question-${index}`}
+            hidden={index !== 0}
+          >
+            <p>{item.answer}</p>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>

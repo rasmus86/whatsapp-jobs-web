@@ -1,0 +1,21 @@
+{
+  "name": "whatsapp-jobs-web",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@tsparticles/engine": "^3.8.1",
+    "@tsparticles/slim": "^3.8.1",
+    "astro": "^4.16.18",
+    "balloons-js": "^0.0.3"
+  },
+  "devDependencies": {
+    "fontkit": "^2.0.4",
+    "opentype.js": "^2.0.0"
+  }
+}

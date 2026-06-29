@@ -1,0 +1,10 @@
+{
+  "error": true,
+  "url": "https://sowieso.wero-wallet.eu/media/images/ing-bank.png",
+  "statusCode": 404,
+  "statusMessage": "Page not found: /media/images/ing-bank.png",
+  "message": "Page not found: /media/images/ing-bank.png",
+  "data": {
+    "path": "/media/images/ing-bank.png"
+  }
+}

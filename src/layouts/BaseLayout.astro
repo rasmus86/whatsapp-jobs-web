@@ -1,0 +1,73 @@
+---
+import '../styles/bumble.css';
+import SeoJsonLd from '../components/SeoJsonLd.astro';
+import { PRIMARY_GEO } from '../seo/home';
+import { SITE, SEO_KEYWORDS } from '../site';
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title?: string;
+  /** When set, used as the full document title (SERP-optimised). */
+  absoluteTitle?: string;
+  description: string;
+  faq?: readonly FaqItem[];
+}
+
+const { description, title = 'Find work in your WhatsApp group', absoluteTitle, faq = [] } =
+  Astro.props;
+const fullTitle = absoluteTitle ?? `${SITE.name} | ${title}`;
+const keywords = SEO_KEYWORDS.join(', ');
+const ogImage = `${SITE.url}/og-image.svg`;
+const geoPosition = `${PRIMARY_GEO.latitude};${PRIMARY_GEO.longitude}`;
+const icbm = `${PRIMARY_GEO.latitude}, ${PRIMARY_GEO.longitude}`;
+---
+
+<!doctype html>
+<html lang={PRIMARY_GEO.locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={SITE.name} />
+    <link rel="canonical" href={SITE.url} />
+    <link rel="alternate" hreflang={PRIMARY_GEO.locale} href={SITE.url} />
+    <link rel="alternate" hreflang="x-default" href={SITE.url} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="geo.region" content={PRIMARY_GEO.regionIso} />
+    <meta name="geo.placename" content={PRIMARY_GEO.placenameLocal} />
+    <meta name="geo.position" content={geoPosition} />
+    <meta name="ICBM" content={icbm} />
+    <meta name="content-language" content={PRIMARY_GEO.locale} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:locale" content={PRIMARY_GEO.openGraphLocale} />
+    <meta property="og:locale:alternate" content="en" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={SITE.url} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={`${SITE.name}: labour hire jobs via WhatsApp in Australia`} />
+    <meta property="og:country-name" content={PRIMARY_GEO.placename} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={`${SITE.name}: labour hire jobs via WhatsApp in Australia`} />
+    <meta name="theme-color" content="#18AB60" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+    <link rel="dns-prefetch" href="https://images.unsplash.com" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM site summary" />
+    <SeoJsonLd {description} documentTitle={fullTitle} {faq} />
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

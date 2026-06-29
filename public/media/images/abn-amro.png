@@ -1,0 +1,10 @@
+{
+  "error": true,
+  "url": "https://sowieso.wero-wallet.eu/media/images/abn-amro.png",
+  "statusCode": 404,
+  "statusMessage": "Page not found: /media/images/abn-amro.png",
+  "message": "Page not found: /media/images/abn-amro.png",
+  "data": {
+    "path": "/media/images/abn-amro.png"
+  }
+}

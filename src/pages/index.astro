@@ -1,0 +1,258 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FaqSection from '../components/FaqSection.astro';
+import GeoAbout from '../components/GeoAbout.astro';
+import YakkaArchitecture from '../components/YakkaArchitecture.astro';
+import {
+  GEO_FAQ,
+  GEO_FIND_WORK,
+  GEO_MISSION,
+  GEO_POST_JOB,
+  GEO_YAKKA,
+} from '../data/geo-faq';
+import { MISSION_CARDS } from '../data/mission-images';
+import { HOME_SEO_DESCRIPTION, HOME_SEO_TITLE } from '../seo/home';
+import { SITE, YAKKA, whatsAppUrl, whatsAppLinkAttrs, yakkaLinkAttrs } from '../site';
+
+const description = HOME_SEO_DESCRIPTION;
+
+const heroStats = [
+  { label: 'Workers connected', count: 12, suffix: ' K+' },
+  { label: 'Groups with jobs', count: 32 },
+  { label: 'Open roles this month', count: 2327 },
+];
+
+const missionCards = MISSION_CARDS;
+---
+
+<BaseLayout absoluteTitle={HOME_SEO_TITLE} {description} faq={GEO_FAQ}>
+  <a class="sr-only" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="site-header__nav-pill" aria-label="Main">
+      <a href="#about">About</a>
+      <a href="#find-work">Find work</a>
+      <a href="#jobs">How it works</a>
+      <a href="#stories">Get paid</a>
+      <a href="#faq">FAQ</a>
+      <a href="#support">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__aurora" aria-hidden="true">
+        <div class="hero__aurora-layer"></div>
+      </div>
+      <div class="hero__content">
+        <h1 class="hero__title" id="hero-title">
+          <span class="hero__title-line">WhatsApp</span>
+          <span class="hero__title-line">Jobs</span>
+        </h1>
+        <p class="hero__lead">
+          WhatsApp Jobs lists real shifts from labour hire WhatsApp groups across Australia. One message, no extra app.
+        </p>
+        <a
+          class="btn btn--white hero__cta"
+          href={whatsAppUrl('Hi, I\'m looking for work. My trade is __ and I\'m based in __.')}
+          {...whatsAppLinkAttrs}
+        >
+          Find work on WhatsApp
+        </a>
+        <div class="hero-stats" data-count-section aria-labelledby="hero-stats-heading">
+          <p class="hero-stats__eyebrow" id="hero-stats-heading">This month in Australia</p>
+          <ul class="hero-stats__list">
+            {
+              heroStats.map((stat) => (
+                <li class="hero-stats__item">
+                  <span
+                    class="hero-stats__value"
+                    data-count-value
+                    data-count={stat.count}
+                    {...(stat.suffix ? { 'data-suffix': stat.suffix } : {})}
+                    data-locale="false"
+                    aria-label={
+                      stat.suffix
+                        ? `${stat.count} thousand plus`
+                        : String(stat.count)
+                    }
+                  >
+                    {stat.suffix ? `${stat.count}${stat.suffix}` : stat.count}
+                  </span>
+                  <span class="hero-stats__label">{stat.label}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="hero__divider" role="presentation"></div>
+    </section>
+
+    <GeoAbout />
+
+    <section class="mission" id="jobs" aria-labelledby="mission-heading">
+      <div class="mission__grid">
+        <div class="mission__content">
+          <h2 class="mission__title" id="mission-heading">
+            <span>{GEO_MISSION.heading}</span>
+          </h2>
+          <p class="mission__text">{GEO_MISSION.body}</p>
+          <a
+            class="btn btn--dark mission__cta"
+            href={whatsAppUrl('Hi, I want to find work through WhatsApp Jobs.')}
+            {...whatsAppLinkAttrs}>Find work on WhatsApp</a>
+        </div>
+        <div class="mission__visual" aria-hidden="true">
+          <article class="mission-card mission-card--back-2">
+            <img
+              src={missionCards[2].src}
+              srcset={missionCards[2].srcSet}
+              sizes={missionCards[2].sizes}
+              alt={missionCards[2].alt}
+              width="220"
+              height="340"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="mission-card__tag">{missionCards[2].tag}</span>
+          </article>
+          <article class="mission-card mission-card--back-1">
+            <img
+              src={missionCards[1].src}
+              srcset={missionCards[1].srcSet}
+              sizes={missionCards[1].sizes}
+              alt={missionCards[1].alt}
+              width="220"
+              height="340"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="mission-card__tag">{missionCards[1].tag}</span>
+          </article>
+          <article class="mission-card mission-card--front">
+            <img
+              src={missionCards[0].src}
+              srcset={missionCards[0].srcSet}
+              sizes={missionCards[0].sizes}
+              alt={missionCards[0].alt}
+              width="220"
+              height="340"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="mission-card__tag">{missionCards[0].tag}</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="products" aria-labelledby="products-heading">
+      <h2 class="sr-only" id="products-heading">WhatsApp Jobs for workers and hirers</h2>
+      <div class="products__grid">
+        <article class="product-card product-card--bff" id="find-work">
+          <h3>{GEO_FIND_WORK.heading}</h3>
+          <p>{GEO_FIND_WORK.body}</p>
+          <a
+            class="product-card__link"
+            href={whatsAppUrl('Hi, I\'m looking for work. My trade is __ and I\'m based in __.')}
+            {...whatsAppLinkAttrs}
+          >
+            Find work on WhatsApp
+          </a>
+        </article>
+        <article class="product-card product-card--date" id="hire">
+          <h3>{GEO_POST_JOB.heading}</h3>
+          <p>{GEO_POST_JOB.body}</p>
+          <a
+            class="product-card__link"
+            href={whatsAppUrl('Hi, I need to hire workers for my site.')}
+            {...whatsAppLinkAttrs}
+          >
+            Hire through WhatsApp
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <section class="stories" id="stories" aria-labelledby="stories-title">
+      <div class="stories__content">
+        <h2 id="stories-title">{GEO_YAKKA.heading}</h2>
+        <p>{GEO_YAKKA.body}</p>
+      </div>
+      <div class="stories__arch" aria-hidden="true">
+        <YakkaArchitecture />
+      </div>
+    </section>
+
+    <FaqSection items={GEO_FAQ} />
+
+    <section class="cta" id="support" aria-labelledby="cta-heading">
+      <h2 id="cta-heading">Ready for your next shift?</h2>
+      <p>Send us a WhatsApp message. Tell us what you do and where you are. We&apos;ll help from there.</p>
+      <div class="cta__actions">
+        <a
+          class="btn btn--dark"
+          href={whatsAppUrl('Hi, I\'m looking for work. My trade is __ and I\'m based in __.')}
+          {...whatsAppLinkAttrs}>Find work on WhatsApp</a>
+        <a
+          class="btn btn--outline"
+          href={whatsAppUrl('Hi, I have a question about WhatsApp Jobs.')}
+          {...whatsAppLinkAttrs}
+        >
+          Ask a question
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__grid">
+      <div>
+        <h3>Our apps</h3>
+        <ul>
+          <li><a href="#find-work">WhatsApp Jobs</a></li>
+          <li><a href={YAKKA.url} {...yakkaLinkAttrs}>Yakka</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Company</h3>
+        <ul>
+          <li><a href="#jobs">How it works</a></li>
+          <li><a href={whatsAppUrl()} {...whatsAppLinkAttrs}>Contact us</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#support">Support</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Terms and conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span
+        >© {new Date().getFullYear()} {SITE.name}. Powered by{' '}
+        <a class="site-footer__yakka-link" href={YAKKA.url} {...yakkaLinkAttrs}>{SITE.poweredBy}</a>.</span
+      >
+      <a href={SITE.url}>{SITE.url.replace('https://', '')}</a>
+    </div>
+  </footer>
+
+  <a
+    class="powered-by-yakka"
+    id="powered-by-yakka"
+    href={YAKKA.url}
+    {...yakkaLinkAttrs}
+    aria-label="Powered by YAKKA — visit yakkalabour.com.au"
+  >
+    <span class="powered-by-yakka__label">Powered by</span>
+    <span class="powered-by-yakka__brand">{SITE.poweredBy.toUpperCase()}</span>
+  </a>
+
+  <script>
+    import '../scripts/page-init.ts';
+  </script>
+</BaseLayout>
